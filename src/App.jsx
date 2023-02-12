@@ -8,21 +8,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      roboName : 'my first cat'
+      catName : 'my first cat'
     }
   }
 
-  getRoboNameInput = () => {
-    const submission = document.querySelector('#roboRequestFormInput').value;
+  getCatNameInput = () => {
+    const submission = document.querySelector('#catRequestFormInput').value;
     return submission;            
 }
 
-setRoboName = () => {
-    this.setState({'roboName': this.getRoboNameInput()})   
+setCatName = () => {
+    this.setState({'catName': this.getCatNameInput()})   
 }
 
 onNameSubmit = (event) => {
-    this.setRoboName();
+    this.setCatName();
 }
 
   render() {
@@ -30,7 +30,7 @@ onNameSubmit = (event) => {
       <>
           <Header/>
           <Form onNameSubmit={this.onNameSubmit}/>
-          <Card name={this.state.roboName}/>
+          <Card name={this.state.catName}/>
       </>
     )
   }

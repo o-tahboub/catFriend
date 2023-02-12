@@ -4,19 +4,19 @@ const Form = (props) => {
     return(
         <div>
             <form 
-                id='roboRequestForm' 
-                name='roboRequestForm'>
+                id='catRequestForm' 
+                name='catRequestForm'>
                     <input
-                        id='roboRequestFormInput'
+                        id='catRequestFormInput'
                         type='text' 
-                        placeholder='Add Robo Name Here'
+                        placeholder='Add Cat Name Here'
                         >
                     </input>
                     <br></br>
                     <input 
-                        id='roboRequestFormSubmit' 
+                        id='catRequestFormSubmit' 
                         type='button' 
-                        value='Click here for a new Robo'
+                        value='Click here for a new Cat'
                         onClick={props.onNameSubmit}
                         >
                     </input>
