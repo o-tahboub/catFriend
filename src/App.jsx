@@ -23,6 +23,7 @@ class App extends Component {
 
   onKeyDownSubmit = (event) => {
     if(event.code === 'Enter') {
+      event.preventDefault();
       this.onNameSubmit();
     } else {
       return;

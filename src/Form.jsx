@@ -10,6 +10,7 @@ const Form = (props) => {
                         id='catRequestFormInput'
                         type='text' 
                         placeholder='Add Cat Name Here'
+                        onKeyDown={props.onKeyDownSubmit}
                         className='p-5 
                             border-white m-5
                             text-stone-900 
@@ -23,7 +24,6 @@ const Form = (props) => {
                         type='button' 
                         value='Click here for a new Cat'
                         onClick={props.onClickSubmit}
-                        onKeyDown={props.onKeyDownSubmit}
                         className='p-5
                             m-5
                             bg-slate-800
