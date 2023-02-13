@@ -14,22 +14,37 @@ class App extends Component {
 
   getCatNameInput = () => {
     const submission = document.querySelector('#catRequestFormInput').value;
-    return submission;            
-}
+    return submission;
+  }
 
-setCatName = () => {
+  setCatName = () => {
     this.setState({'catName': this.getCatNameInput()})   
-}
+  }
 
-onNameSubmit = (event) => {
+  onKeyDownSubmit = (event) => {
+    if(event.code === 'Enter') {
+      this.onNameSubmit();
+    } else {
+      return;
+    }
+  }
+
+  onClickSubmit = () => {
+    this.onNameSubmit();
+  }
+
+  onNameSubmit = () => {
     this.setCatName();
-}
+  }
 
   render() {
     return (
       <>
           <Header/>
-          <Form onNameSubmit={this.onNameSubmit}/>
+          <Form 
+            onClickSubmit={this.onClickSubmit} 
+            onKeyDownSubmit={this.onKeyDownSubmit}
+          />
           <Card name={this.state.catName}/>
       </>
     )

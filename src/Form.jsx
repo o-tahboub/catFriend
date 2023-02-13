@@ -22,7 +22,8 @@ const Form = (props) => {
                         id='catRequestFormSubmit' 
                         type='button' 
                         value='Click here for a new Cat'
-                        onClick={props.onNameSubmit}
+                        onClick={props.onClickSubmit}
+                        onKeyDown={props.onKeyDownSubmit}
                         className='p-5
                             m-5
                             bg-slate-800
