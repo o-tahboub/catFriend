@@ -8,33 +8,32 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      catName : 'my first cat'
+      catName: 'my first cat'
     }
   }
 
-  getCatNameInput = () => {
-    const submission = document.querySelector('#catRequestFormInput').value;
-    return submission;
-  }
+  submissionElement = () => document.querySelector('#catRequestFormInput');
 
   setCatName = () => {
-    this.setState({'catName': this.getCatNameInput()})   
+    if(this.submissionElement().value !== '') {
+      this.setState({'catName': this.submissionElement().value}, () => {
+        this.submissionElement().value = '';
+      });
+    } else {
+      return
+    }
   }
 
   onKeyDownSubmit = (event) => {
     if(event.code === 'Enter') {
       event.preventDefault();
-      this.onNameSubmit();
+      this.setCatName();
     } else {
       return;
     }
   }
 
   onClickSubmit = () => {
-    this.onNameSubmit();
-  }
-
-  onNameSubmit = () => {
     this.setCatName();
   }
 
