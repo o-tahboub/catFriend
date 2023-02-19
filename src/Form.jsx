@@ -5,14 +5,18 @@ const Form = (props) => {
         <div>
             <form 
                 id='catRequestForm' 
-                name='catRequestForm'>
+                name='catRequestForm'
+                onSubmit={props.handleSubmit}>
                     <input
                         id='catRequestFormInput'
                         type='text' 
                         placeholder='Add Cat Name Here'
+                        onChange={props.handleChange}
                         onKeyDown={props.onKeyDownSubmit}
-                        className='p-5 
-                            border-white m-5
+                        className='
+                            p-5
+                            m-5
+                            border-white
                             text-stone-900 
                             bg-blue-100
                             text-xl'
@@ -21,10 +25,10 @@ const Form = (props) => {
                     <br></br>
                     <input 
                         id='catRequestFormSubmit' 
-                        type='button' 
+                        type='submit' 
                         value='Click here for a new Cat'
-                        onClick={props.onClickSubmit}
-                        className='p-5
+                        className='
+                            p-5
                             m-5
                             bg-slate-800
                             text-xl'

@@ -8,33 +8,46 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      catName: 'my first cat'
+      catName: '',
+      submittedCatName: 'my first cat'
     }
   }
 
-  submissionElement = () => document.querySelector('#catRequestFormInput');
+  handleChange = (event) => this.setState({'catName': event.target.value});
 
-  setCatName = () => {
-    if(this.submissionElement().value !== '') {
-      this.setState({'catName': this.submissionElement().value}, () => {
-        this.submissionElement().value = '';
-      });
+  submissionElement = () => document.querySelector('#catRequestFormInput');
+  
+  handleError = () => alert('Enter a valid name');
+
+  submissionIsValid = (submission) => {
+    if(submission === '' ||
+    typeof submission !== "string") {
+      this.handleError()
+      return false;
     } else {
-      return
+      return true
     }
   }
 
   onKeyDownSubmit = (event) => {
     if(event.code === 'Enter') {
-      event.preventDefault();
-      this.setCatName();
-    } else {
+      this.handleSubmit(event);
+    } else {    
       return;
     }
   }
 
-  onClickSubmit = () => {
-    this.setCatName();
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if(this.submissionIsValid(this.state.catName)) {
+      this.setState({'submittedCatName': this.state.catName}, () => {
+        this.submissionElement().value = '';
+        this.setState({'catName': ''});
+      });
+    } else {
+      return;
+    }
+    
   }
 
   render() {
@@ -42,10 +55,11 @@ class App extends Component {
       <>
           <Header/>
           <Form 
-            onClickSubmit={this.onClickSubmit} 
+            handleChange={this.handleChange} 
+            handleSubmit={this.handleSubmit}
             onKeyDownSubmit={this.onKeyDownSubmit}
           />
-          <Card name={this.state.catName}/>
+          <Card name={this.state.submittedCatName}/>
       </>
     )
   }
